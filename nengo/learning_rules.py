@@ -6,11 +6,11 @@ from nengo.utils.compat import is_iterable, is_string, itervalues
 
 
 class LearningRuleTypeSizeInParam(IntParam):
-    strings = ('pre', 'post', 'mid', 'pre_state', 'post_state')
+    valid_string_values = ('pre', 'post', 'mid', 'pre_state', 'post_state')
 
     def validate(self, instance, size_in):
         if is_string(size_in):
-            if size_in not in self.strings:
+            if size_in not in self.valid_string_values:
                 raise ValidationError(
                     "%r is not a valid string value (must be one of %s)"
                     % (size_in, self.strings), attr=self.name, obj=instance)
