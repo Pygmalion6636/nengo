@@ -498,11 +498,11 @@ def test_custom_type(Simulator):
 
     @Builder.register(TestRule)
     def build_test_rule(model, test_rule, rule):
-        error = Signal(np.zeros(rule.size_in))
+        error = Signal(np.zeros(rule.connection.size_in))
         model.add_op(Reset(error))
-        model.sig[rule]['in'] = error
+        model.sig[rule]['in'] = error[:rule.size_in]
 
-        model.add_op(Copy(error, model.sig[rule]['delta'][:, :rule.size_in]))
+        model.add_op(Copy(error, model.sig[rule]['delta']))
 
     with nengo.Network() as net:
         a = nengo.Ensemble(10, 1)
