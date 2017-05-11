@@ -34,6 +34,11 @@ Release History
 
 **Changed**
 
+- Enabled arbitrary learning rule `size_in`, allowing for both integers, as 
+  well as strings enabling learning rule `size_in` to be defined according to
+  connection location. This replaces the `error_type` attribute.
+  (`#1307 <https://github.com/nengo/nengo/issues/1307>`_,
+  `#1310 <https://github.com/nengo/nengo/pull/1310>`_)
 - ``EnsembleArray.n_neurons`` now gives the total number of neurons
   in all ensembles, including those in subnetworks.
   To get the number of neurons in each ensemble,
